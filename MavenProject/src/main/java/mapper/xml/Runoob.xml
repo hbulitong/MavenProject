@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.RunoobMapper">
+	<insert id="insertOneRow" parameterType="java.util.HashMap">
+		insert into runoob_tb
+		(
+			runoob_title,
+			runoob_author,
+			submission_date
+		)
+		values
+		(
+			#{runoob_title},
+			#{runoob_author},
+			curdate()
+		)
+	</insert>
+	<select id="selectById" parameterType="java.util.Map" resultType="java.util.Map">
+		select runoob_title,runoob_author from runoob_tb where runoob_id=#{runoob_id}
+	</select>
+	
+	<select id="selectList" parameterType="java.util.Map" resultType="java.util.Map">
+		select runoob_id,runoob_title,runoob_author from runoob_tb where runoob_author=#{runoob_author}
+	</select>
+</mapper>
